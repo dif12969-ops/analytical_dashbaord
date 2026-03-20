@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+:root {
+  /* High-Fidelity Theme System - Dark (Default) */
+  --color-brand-emerald: #10b981;
+  --bg-primary: #09090b;
+  --bg-secondary: #11141d;
+  --card-bg: rgba(15, 17, 23, 0.6);
+  --card-border: rgba(255, 255, 255, 0.04);
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
+  --glass-white: rgba(255, 255, 255, 0.02);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --map-base: rgba(255, 255, 255, 0.03);
+  --map-stroke: rgba(255, 255, 255, 0.1);
+  --axis-color: #475569;
+}
+
+.light-theme {
+  /* High-Fidelity Theme System - Light */
+  --bg-primary: #f3f4f6;
+  --bg-secondary: #ffffff;
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --card-border: rgba(0, 0, 0, 0.08);
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --glass-white: rgba(0, 0, 0, 0.03);
+  --glass-border: rgba(0, 0, 0, 0.1);
+  --map-base: #f1f5f9;
+  --map-stroke: #cbd5e1;
+  --axis-color: #64748b;
+}
+
+@theme {
+  --color-brand-emerald: var(--color-brand-emerald);
+  --color-brand-bg: var(--bg-primary);
+}
+
+body {
+  @apply bg-brand-bg antialiased selection:bg-brand-emerald/30 selection:text-[#09090b];
+  color: var(--text-primary);
+  margin: 0;
+  background-color: var(--bg-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Professional Component System */
+.premium-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  @apply rounded-2xl p-6 backdrop-blur-2xl transition-all duration-300 hover:border-brand-emerald/20;
+}
+
+.glass-card {
+  background-color: var(--glass-white);
+  border: 1px solid var(--glass-border);
+  @apply rounded-xl backdrop-blur-md;
+}
+
+.card-accent-emerald {
+  @apply bg-brand-emerald/10 border border-brand-emerald/20 rounded-2xl p-6 transition-all hover:bg-brand-emerald/15;
+}
+
+.button-primary {
+  @apply bg-brand-emerald hover:bg-emerald-500 text-[#09090b] px-6 py-2.5 rounded-xl transition-all font-semibold text-sm shadow-lg shadow-brand-emerald/20;
+}
+
+.input-glass {
+  background-color: var(--glass-white);
+  border: 1px solid var(--glass-border);
+  @apply rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-brand-emerald/50 focus:bg-white/10 transition-all;
+  color: var(--text-primary);
+}
+
+.input-glass::placeholder {
+  color: var(--text-secondary);
+}
+
+/* Recharts Overrides */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: var(--text-secondary) !important;
+  stroke-opacity: 0.1 !important;
+}
+
+.recharts-tooltip-cursor {
+  fill: var(--glass-white) !important;
+}
+
+.recharts-default-tooltip {
+  background-color: var(--bg-secondary) !important;
+  border-color: var(--card-border) !important;
+  @apply !rounded-xl !p-3 !shadow-2xl !backdrop-blur-md;
+}
+
+/* Hide scrollbar */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
